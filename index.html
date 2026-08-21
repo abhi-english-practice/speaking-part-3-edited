@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aptis Speaking Part 3 – Practice</title>
+  <meta name="description" content="Aptis Speaking Part 3 bilingual practice with images, model answers, vocabulary and recording.">
+  <meta name="theme-color" content="#2563eb">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div>
+        <h1>Aptis Speaking Part 3 – Practice</h1>
+        <div class="sub">Song ngữ EN–VI · Q1 So sánh · Q2 Liên quan · Q3 Ý kiến · Note collocations & vocabulary</div>
+      </div>
+      <div class="controls">
+        <button onclick="prevSet()">← Back</button>
+        <span class="badge">Speak question <input id="jump" type="number" min="1" max="25" value="1" onchange="jumpTo(this.value)"> / <span id="total">25</span></span>
+        <button class="primary" onclick="nextSet()">Next →</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="app">
+    <div class="main-card">
+      <div class="progress"><div id="progress"></div></div>
+      <div class="section">
+        <div class="header-row">
+          <div>
+            <div class="badge" id="themeBadge">Topic</div>
+            <h2 class="qtitle" id="title"></h2>
+            <div class="sub" id="themeVi"></div>
+          </div>
+          <div class="controls">
+            <button onclick="speakCurrentQuestion()">🔊 Đọc câu hỏi</button>
+            <button onclick="copyCurrentAnswer()">📋 Copy answer</button>
+          </div>
+        </div>
+
+        <div class="pics" id="pics"></div>
+
+        <div class="tabs">
+          <button class="tab active" id="tab0" onclick="setQ(0)">🖼️ Q1 – So sánh</button>
+          <button class="tab" id="tab1" onclick="setQ(1)">💬 Q2 – Liên quan</button>
+          <button class="tab" id="tab2" onclick="setQ(2)">💡 Q3 – Ý kiến</button>
+        </div>
+
+        <div class="question-box">
+          <div class="question-en" id="questionEn"></div>
+          <div class="question-vi" id="questionVi"></div>
+        </div>
+
+        <div class="practice-grid">
+          <div class="practice">
+            <div class="label">Your answer</div>
+            <textarea id="userAnswer" placeholder="Type or paste your speaking answer here..."></textarea>
+            <div class="timer">
+              <span class="clock" id="clock">00:45</span>
+              <button onclick="startTimer()">⏱️ Start 45s</button>
+              <button onclick="resetTimer()">Reset</button>
+              <button class="danger" id="recBtn" onclick="toggleRecord()">🎙️ Record</button>
+            </div>
+            <div class="audioBox" id="audioBox">Recording playback will appear here. / File ghi âm sẽ hiện ở đây.</div>
+          </div>
+
+          <div class="answer-card hidden" id="answerCard">
+            <div class="answer-actions">
+              <div class="label">Sample answer</div>
+              <div class="controls">
+                <button onclick="toggleAnswer()" id="toggleAnswerBtn">👁️ Hiện đáp án</button>
+                <button onclick="speakAnswer()">🔊 Đọc</button>
+              </div>
+            </div>
+            <div class="answer-content">
+              <div class="answer-en" id="answerEn"></div>
+              <div class="answer-vi" id="answerVi"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="notes">
+          <div class="note-card">
+            <div class="answer-actions">
+              <h3>Collocations cần học</h3>
+              <button onclick="speakNotes('collocations')">🔊 Đọc collocations</button>
+            </div>
+            <div class="items" id="collocations"></div>
+          </div>
+          <div class="note-card">
+            <div class="answer-actions">
+              <h3>Vocabulary B1+ / B2</h3>
+              <button onclick="speakNotes('vocab')">🔊 Đọc vocab</button>
+            </div>
+            <div class="items" id="vocab"></div>
+          </div>
+        </div>
+
+        <div class="strategy">
+          <h3>Khung trả lời nhanh cho Part 3</h3>
+          <div class="formula">
+            <div class="step"><b>Q1 – Describe / Compare</b><br>In the first picture... In the second picture... Both pictures show... However...</div>
+            <div class="step"><b>Q2 – Related question</b><br>There are several benefits/reasons. First... Another point is... For example...</div>
+            <div class="step"><b>Q3 – Opinion</b><br>Personally, I think/prefer... The main reason is... However, it depends on...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="toast" id="toast">Done</div>
+  <script src="data.js" defer></script>
+  <script src="app.js" defer></script>
+</body>
+</html>
